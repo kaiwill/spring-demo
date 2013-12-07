@@ -1,4 +1,4 @@
------------demo1----------------
+#demo1
 1.配置一个servlet，所有的/example/* 将会被提交到spring mvc框架中
 2.这个servlet会去加载 /WEB-INF/example-servlet.xml这个spring配置文件
 3.spring配置文件中配置了一个名为 /hello.action的 Controller，完整的URL是 /example/hello.action

@@ -40,5 +40,10 @@ DefaultAnnotationHandlerMapping ： 如果这个Controller中使用了annotation
 上加入annotation即可。
 
 
+#demo3
+@Controller :我们编写的Controller类如果使用@Controller来标识，那么这个类不需要继承（或者实现）某些类。当然如果需要的话，也可以使用
+@RequestMapping： 
+
+
 
  

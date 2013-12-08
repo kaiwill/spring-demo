@@ -102,6 +102,7 @@ http请求信息包含六部分信息：
 	</bean> 
  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
 ```
+
 ```java
  @RequestMapping(value="/m5/{id}",method=RequestMethod.GET) // /m5/123;year=2013;month=02
  public ModelAndView m5(@MatrixVariable String year,@MatrixVariable String month, HttpServletRequest request,

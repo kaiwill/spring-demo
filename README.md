@@ -45,6 +45,41 @@ DefaultAnnotationHandlerMapping ： 如果这个Controller中使用了annotation
 @RequestMapping： 可以修饰类也可以修饰方法。如果修饰类，那么所有修饰方法的url都相对于修饰类的
 
 
+#demo4
+@Controller 可以找到处理器对象，以下考虑处理器中的功能处理方法，那么请求如何路由到功能处理方法，先从HTTP协议开始：
+http请求信息包含六部分信息：
+1. ①请求方法，如GET或POST，表示提交的方式；
+2. ②URL，请求的地址信息；
+3. ③协议及版本；
+4. ④请求头信息（包括Cookie信息）；
+5. ⑤回车换行（CRLF）；
+6. ⑥请求内容区（即请求的内容或数据），如表单提交时的参数数据、URL请求参数（?abc=123 ？后边的）等。
+	那此处我们可以看到有①、②、④、⑥一般是可变的，因此我们可以这些信息进行请求到处理器的功能处理方法的映射，因此请求的映射分为如下几种：
+* URL路径映射：使用URL映射请求到处理器的功能处理方法；
+* 请求方法映射限定：如限定功能处理方法只处理GET请求；
+* 请求参数映射限定：如限定只处理包含“abc”请求参数的请求；
+* 请求头映射限定：如限定只处理“Accept=application/json”的请求。
+
+##例子
+* @RequestMapping(value={"/m_1","/m1"},method={RequestMethod.GET,RequestMethod.POST})
+* URI Template Patterns
+```java
+	@RequestMapping(value="/m2/{id}",method=RequestMethod.GET)
+	public ModelAndView m2(@PathVariable String id,HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		request.setAttribute("msg","id=>"+id);
+	
+		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
+	}
+```
+ 
+
+
+
+
+
+
+
 
 
  

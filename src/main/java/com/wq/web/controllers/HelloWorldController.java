@@ -81,6 +81,17 @@ public class HelloWorldController{
 		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
 	}
 	
+	//   /m6/123;month=01;year=2013/zhangsan;age=15;fav=eat,drink,play
+	@RequestMapping(value="/m6/{id}/{name}",method=RequestMethod.GET) 
+	public ModelAndView m6(@MatrixVariable Map<String,String> map1,
+							@MatrixVariable(pathVar="name") Map<String,String> map2,
+							HttpServletRequest request,
+							HttpServletResponse response) throws Exception {
+		request.setAttribute("msg","m6 map1="+map1.toString()+"  map2="+map2.toString());
+		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
+	}
+	
+	
 	
 
 	

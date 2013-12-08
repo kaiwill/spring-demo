@@ -112,10 +112,41 @@ http请求信息包含六部分信息：
 		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
  }
 ```
- 
 
+```java
+// GET /owners/42;q=11/pets/21;q=22
+@RequestMapping(value = "/owners/{ownerId}/pets/{petId}", method = RequestMethod.GET)
+public void findPet(
+@MatrixVariable(value="q", pathVar="ownerId") int q1,
+@MatrixVariable(value="q", pathVar="petId") int q2) {
+// q1 == 11
+// q2 == 22
+}
+```
 
+```java
+// GET /pets/42
+@RequestMapping(value = "/pets/{petId}", method = RequestMethod.GET)
+public void findPet(@MatrixVariable(required=true, defaultValue="1") int q) {
+// q == 1
+}
+```
 
+```java
+//   /m6/123;month=01;year=2013/zhangsan;age=15;fav=eat,drink,play
+	@RequestMapping(value="/m6/{id}/{name}",method=RequestMethod.GET) 
+	public ModelAndView m6(@MatrixVariable Map<String,String> map1,
+							@MatrixVariable(pathVar="name") Map<String,String> map2,
+							HttpServletRequest request,
+							HttpServletResponse response) throws Exception {
+		request.setAttribute("msg","m6 map1="+map1.toString()+"  map2="+map2.toString());
+		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
+	}
+```
+
+* Request Parameters and Header Values
+@RequestMapping(value = "/pets/{petId}", method =RequestMethod.GET, params="myParam=myValue")  必须包含参数myParam=myValue
+@RequestMapping(value = "/pets", method = RequestMethod.GET, headers="myHeader=myValue")
 
 
 

@@ -1,6 +1,8 @@
 package com.wq.web.controllers;
 
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -54,6 +56,24 @@ public class HelloWorldController{
 	
 		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
 	}
+	
+	@RequestMapping(value="/m3/{id}/{name}",method=RequestMethod.GET)
+	public ModelAndView m3(@PathVariable String id,@PathVariable String name,HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		request.setAttribute("msg","id=>"+id+"   "+name);
+	
+		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
+	}
+	
+	@RequestMapping(value="/m4/{id}/{name}",method=RequestMethod.GET)
+	public ModelAndView m4(Map<String,String> map,HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		request.setAttribute("msg","map:"+map.toString());
+	
+		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
+	}
+	
+	
 	
 }
 

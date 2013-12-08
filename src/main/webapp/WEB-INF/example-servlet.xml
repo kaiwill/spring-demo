@@ -6,6 +6,15 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="com.wq.web.controllers"></context:component-scan>
-
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+		<property name="removeSemicolonContent" value="false"></property>
+	</bean> 
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:/test.properties</value>
+		</property>
+	</bean>
 
 </beans>

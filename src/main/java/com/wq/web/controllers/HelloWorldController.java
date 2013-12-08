@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,13 +66,23 @@ public class HelloWorldController{
 		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
 	}
 	
-	@RequestMapping(value="/m4/{id}/{name}",method=RequestMethod.GET)
-	public ModelAndView m4(Map<String,String> map,HttpServletRequest request,
+	@RequestMapping(value="/m4/{id:\\d{3}}",method=RequestMethod.GET) //id必须是3位数字
+	public ModelAndView m4(@PathVariable int id,HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		request.setAttribute("msg","map:"+map.toString());
+		request.setAttribute("msg","id:"+id);
 	
 		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
 	}
+	
+	@RequestMapping(value="/m5/{id}",method=RequestMethod.GET) // /m5;year=2013;month=02
+	public ModelAndView m5(@MatrixVariable String year,@MatrixVariable String month, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		request.setAttribute("msg","m5 year="+year+"  month="+month);
+		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
+	}
+	
+	
+
 	
 	
 	

@@ -61,7 +61,10 @@ http请求信息包含六部分信息：
 * 请求头映射限定：如限定只处理“Accept=application/json”的请求。
 
 ##例子
-* @RequestMapping(value={"/m_1","/m1"},method={RequestMethod.GET,RequestMethod.POST})
+* 多个映射
+```java
+	@RequestMapping(value={"/m_1","/m1"},method={RequestMethod.GET,RequestMethod.POST})
+```
 * URI Template Patterns
 ```java
 	@RequestMapping(value="/m2/{id}",method=RequestMethod.GET)
@@ -82,6 +85,26 @@ http请求信息包含六部分信息：
 	}
 ```
 * URI Template Patterns with Regular Expressions  语法 ``{varName:regex}`` 
+```java
+	@RequestMapping(value="/m4/{id:\\d{3}}",method=RequestMethod.GET) //id必须是3位数字,否则无法匹配出现404
+	public ModelAndView m4(@PathVariable int id,HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		request.setAttribute("msg","id:"+id);
+	
+		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
+	}
+```
+* Matrix Variables
+ 要启用该功能，首先要配置
+ ```xml
+ <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+		<property name="removeSemicolonContent" value="false"></property>
+	</bean> 
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+ ```
+```java
+
+```
  
 
 

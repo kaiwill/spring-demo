@@ -95,7 +95,8 @@ http请求信息包含六部分信息：
 	}
 ```
 * Matrix Variables
- 要启用该功能，首先要配置
+要启用该功能，首先要配置
+ 
 ```
  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 		<property name="removeSemicolonContent" value="false"></property>

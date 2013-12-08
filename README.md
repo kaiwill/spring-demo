@@ -12,7 +12,7 @@ DispatcherServlet中的几个默认部件：
 
 doDispatch（request,response）
     找到HandlerMapping对象，调用getHandler(request)，得到HandlerExecutionChain，此时HandlerExecutionChain 中已经包含了Controller对象
-	取得HandlerAdapter对象-->因为Controller对象中的方法签名各有不同，所以需要将Controller对象进行适配以得到能够调用的Controller中的方法。
+	取得HandlerAdapter对象-->因为Controller的类型各有不同，比如有实现Controller接口的，有使用annotation的，所以需要将Controller对象进行适配以得到能够调用的Controller中的方法。
     mv = ha.handle(processedRequest, response, mappedHandler.getHandler());即执行	HandlerAdapter的handle方法，返回ModelAndView 
     执行render方法，将ModelAndView进行渲染，渲染的时候需要取得ViewResolver对象，依靠这个对象得到一个View对象，最终调用View对象的 render方法，执行render方法的时候，将ModelAndView中的model传入进行视图渲染
     
@@ -42,7 +42,8 @@ DefaultAnnotationHandlerMapping ： 如果这个Controller中使用了annotation
 
 #demo3
 @Controller :我们编写的Controller类如果使用@Controller来标识，那么这个类不需要继承（或者实现）某些类。当然如果需要的话，也可以使用
-@RequestMapping： 
+@RequestMapping： 可以修饰类也可以修饰方法。如果修饰类，那么所有修饰方法的url都相对于修饰类的
+
 
 
 

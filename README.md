@@ -72,7 +72,6 @@ http请求信息包含六部分信息：
 		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
 	}
 ```
-
 ```java
 	@RequestMapping(value="/m3/{id}/{name}",method=RequestMethod.GET)
 	public ModelAndView m3(@PathVariable String id,@PathVariable String name,HttpServletRequest request,
@@ -82,8 +81,7 @@ http请求信息包含六部分信息：
 		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
 	}
 ```
-* URI Template Patterns with Regular Expressions
- >语法 ``{varName:regex}`` 
+* URI Template Patterns with Regular Expressions  语法 ``{varName:regex}`` 
  
 
 

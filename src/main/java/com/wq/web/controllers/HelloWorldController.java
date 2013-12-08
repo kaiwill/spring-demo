@@ -74,7 +74,7 @@ public class HelloWorldController{
 		return new ModelAndView("/WEB-INF/views/example/hello.jsp") ;
 	}
 	
-	@RequestMapping(value="/m5/{id}",method=RequestMethod.GET) // /m5;year=2013;month=02
+	@RequestMapping(value="/m5/{id}",method=RequestMethod.GET) // /m5/123;year=2013;month=02
 	public ModelAndView m5(@MatrixVariable String year,@MatrixVariable String month, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		request.setAttribute("msg","m5 year="+year+"  month="+month);

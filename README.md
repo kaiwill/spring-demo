@@ -83,7 +83,7 @@ http请求信息包含六部分信息：
 	}
 ```
 * URI Template Patterns with Regular Expressions
->语法 ``{varName:regex}`` 
+> 语法 ``{varName:regex}`` 
  
 
 

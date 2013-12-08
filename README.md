@@ -145,8 +145,11 @@ public void findPet(@MatrixVariable(required=true, defaultValue="1") int q) {
 ```
 
 * Request Parameters and Header Values
+
+```
 @RequestMapping(value = "/pets/{petId}", method =RequestMethod.GET, params="myParam=myValue")  必须包含参数myParam=myValue
 @RequestMapping(value = "/pets", method = RequestMethod.GET, headers="myHeader=myValue")
+```
 
 
 
